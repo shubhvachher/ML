@@ -1,5 +1,5 @@
 import numpy as np
-shape = (2,20,2)
+shape = (2,10,10,2)
 weights = []
 biases = []
 from time import time
