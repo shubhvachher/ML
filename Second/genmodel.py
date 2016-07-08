@@ -9,4 +9,4 @@ for x in range(len(shape)-1):
     biases.append(np.zeros((1,shape[x+1])))
 model={"weights":weights,"biases":biases}
 import pickle
-pickle.dump(model,open("model.txt","w"))
+pickle.dump(model,open("model.txt","wb"))

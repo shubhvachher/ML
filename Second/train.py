@@ -1,8 +1,8 @@
 import numpy as np
 import pickle
 shape = (2,10,10,2)
-model = pickle.load(open("model.txt","r"))
-data = pickle.load(open("data.txt","r"))
+model = pickle.load(open("model.txt","rb"))
+data = pickle.load(open("data.txt","rb"))
 inX = data["x"]
 inY = data["y"]
 from copy import copy
@@ -33,7 +33,7 @@ def train(inputValue,actualValue):
         temp = np.dot(temp,weight)
         temp = sigmoid(temp)
         activ.append(temp)
-    print len(activ)
+    print(len(activ))
     deltaOut = temp - actualValue
     deltatemp = np.copy(deltaOut)
     backActiv = copy(activ)
@@ -56,7 +56,7 @@ def train(inputValue,actualValue):
     nModel = {}
     nModel["biases"]=biases
     nModel["weights"]=weights
-    pickle.dump(nModel,open("model.txt","w"))
+    pickle.dump(nModel,open("model.txt","wb"))
 
 
 def cost(inputValue,actualValue):
@@ -64,7 +64,7 @@ def cost(inputValue,actualValue):
     temp = output - actualValue
     temp = np.power(temp,2)
     cost = np.sum(temp)
-    print "Cost = ",cost
+    print("Cost = ",cost)
     return cost
 def costMatrix(inputValue,actualValue):
     output = calculate(inputValue)
@@ -73,8 +73,8 @@ def costMatrix(inputValue,actualValue):
     temp = np.sum(temp,axis=1)
     return temp
 def load():
-    model = pickle.load(open("model.txt","r"))
-    data = pickle.load(open("data.txt","r"))
+    model = pickle.load(open("model.txt","rb"))
+    data = pickle.load(open("data.txt","rb"))
     inX = data["x"]
     inY = data["y"]
 #
@@ -83,7 +83,7 @@ def load():
 # pickle.dump(model,open("model.txt","w"))
 if __name__ =="__main__":
     times = input("Times")
-    for x in range(times):
+    for x in range(int(times)):
         cost(inX,inY)
         train(inX,inY)
         load()

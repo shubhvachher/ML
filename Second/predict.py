@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from train import calculate,costMatrix
 def predict(temp):
     shape = (2,3,2)
-    model = pickle.load(open("model.txt","r"))
+    model = pickle.load(open("model.txt","rb"))
     biases = model["biases"]
     weights = model["weights"]
     result = calculate(temp)
@@ -39,7 +39,7 @@ def plot_decision_boundary(pred_func, X, y):
     plt.scatter(X[:, 0], X[:, 1], c=np.argmax(y,axis=1), cmap=plt.cm.Spectral)
     plt.show()
 def show(inp):
-    data = pickle.load(open("data.txt","r"))
+    data = pickle.load(open("data.txt","rb"))
     if inp==1:
         plot_cost(data["x"],data["y"])
     elif inp==2:
