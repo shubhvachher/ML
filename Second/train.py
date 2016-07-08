@@ -14,22 +14,33 @@ def dsig(val):
     a = sigmoid(val)
     return a*(1-a)
 # tries = input("Enter number of tries")
-def calculate():
+def calculate(inputValue):
     inter=[]
-    temp = inX
+    temp = inputValue
     inter.append(temp)
     for weight in weights:
         print weight.shape
         temp = np.dot(temp,weight)
         temp = sigmoid(temp)
         inter.append(temp)
-    print "Inter"
-    for i in inter:
-        print i.shape
+    return temp
+def cost(inputValue,actualValue):
+    output = calculate(inputValue)
+    temp = output - actualValue
+    temp = np.power(temp,2)
+    cost = np.sum(temp)
+    print "Cost = ",cost
+    return cost
+def costMatrix(inputValue,actualValue):
+    output = calculate(inputValue)
+    temp = output - actualValue
+    temp = np.power(temp,2)
+    temp = np.sum(temp,axis=1)
+    return temp
 
 #
 # model["weights"] = weights
 # model["biases"] = biases
 # pickle.dump(model,open("model.txt","w"))
 if __name__ =="__main__":
-    calculate()
+    cost(inX,data["y"])
