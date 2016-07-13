@@ -2,7 +2,7 @@ import numpy as np
 import pickle
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
-from train import calculate,costMatrix
+from train import calculate,cost
 def predict(temp):
     shape = (2,3,2)
     model = pickle.load(open("model.txt","rb"))
@@ -17,7 +17,7 @@ def predict(temp):
     # probs = exp_score/np.sum(exp_score,axis=0)
     # return np.argmax(probs,axis=1)
 def plot_cost(X,y):
-    cost = costMatrix(X,y)
+    cost = cost(X,y)
     xcoord, ycoord = np.hsplit(X,2)
     fig = plt.figure()
     ax = fig.add_subplot(111,projection='3d')

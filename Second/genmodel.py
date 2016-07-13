@@ -1,3 +1,9 @@
+"""
+Generates model for nn of 2 inputs, 2 hidden layers each with 10 units and 2 units in output later.
+Model is like
+weights : Contains randomly initialised weights
+biases : Contains all zero bias values for the model's units
+"""
 import numpy as np
 shape = (2,10,10,2)
 weights = []
